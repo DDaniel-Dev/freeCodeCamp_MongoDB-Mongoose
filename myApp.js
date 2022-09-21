@@ -1,5 +1,9 @@
+// -- http://localhost:3000/ -- //
+
 require('dotenv').config();
-require('mongoose')
+let mongoose = require('mongoose')
+
+mongoose.connect("mongodb+srv://daniel_d:758071@cluster0.4xh9vvt.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 
 let Person;
 
