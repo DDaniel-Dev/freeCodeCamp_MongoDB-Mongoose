@@ -1,11 +1,16 @@
 // -- http://localhost:3000/ -- //
 
 require('dotenv').config();
-let mongoose = require('mongoose')
-
+const mongoose = require('mongoose');
 mongoose.connect("mongodb+srv://daniel_d:758071@cluster0.4xh9vvt.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
+const Schema = mongoose.Schema;
 
-let Person;
+const personSchema = new Schema({
+  name: { type: String, require: true },
+  age: Number,
+  favoriteFoods: [String]
+}); 
+const Person = mongoose.model("Person", personSchema);
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
