@@ -1,8 +1,13 @@
 // -- http://localhost:3000/ -- //
 
 require('dotenv').config();
+
+// -- #1. Install and Set Up Mongoose -- //
 const mongoose = require('mongoose');
 mongoose.connect("mongodb+srv://daniel_d:758071@cluster0.4xh9vvt.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
+
+
+// -- #2. Create a Model -- //
 const Schema = mongoose.Schema;
 
 const personSchema = new Schema({
@@ -12,9 +17,17 @@ const personSchema = new Schema({
 }); 
 const Person = mongoose.model("Person", personSchema);
 
+
+// -- #3. Create and Save a Record of a Model -- //
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  const daniel_d = new Person({name: "Daniel D", age: 25, favoriteFoods: ["rice", "Bun Bo Hue"]});
+
+  daniel_d.save((err, data) => {
+    if (err) return console.error(err);
+    done(null, data)
+  });
 };
+
 
 const createManyPeople = (arrayOfPeople, done) => {
   done(null /*, data*/);
