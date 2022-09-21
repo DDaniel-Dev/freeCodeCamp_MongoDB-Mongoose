@@ -29,9 +29,20 @@ const createAndSavePerson = (done) => {
 };
 
 
+// -- #4. Create Many Records with model.create() -- //
+let arrayOfPeople = [
+  {name: "Henry", age: 18, favoriteFoods: ["TacoBell", "Korean BBQ"]},
+  {name: "Tuan", age: 65, favoriteFoods: ["TacoBell", "Pho"]},
+  {name: "Hoa", age: 49, favoriteFoods: ["Bun Rieu", "Fish"]}
+];
+
 const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+  Person.create(arrayOfPeople, (err, people) => {
+    if (err) return console.error(err);
+    done(null, people);
+  });
 };
+
 
 const findPeopleByName = (personName, done) => {
   done(null /*, data*/);
